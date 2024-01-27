@@ -68,7 +68,7 @@ pred = net(gt_data)
 y = criterion(pred, gt_onehot_label)
 dy_dx = torch.autograd.grad(y, net.parameters())
 
-original_dy_dx = np.array(list(_.detach().clone() for _ in dy_dx))
+original_dy_dx = (list(_.detach().clone() for _ in dy_dx))
 
 def gaussian_noise(data_shape, sigma, device=None):
     """
